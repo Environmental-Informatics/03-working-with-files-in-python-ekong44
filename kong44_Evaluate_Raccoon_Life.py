@@ -15,6 +15,7 @@ Helpful files:
 """
 from statistics import mean
 import math
+import pandas
 
 # part 1 of the assignment 
 george_data = open("2008Male00006.txt","r")
@@ -138,7 +139,6 @@ def distance(val3, val4):
         between_points.append(math.sqrt((val3[i]-val3[i+1])**2 + (val4[i]-val4[i+1])**2)) #difference between points for X and Y
     return between_points
 
-#print("the last column is:", final_matrix["Percent Step\n"])
 
 # using functions to find values  
 average_energy = average_list(float_E)
@@ -163,5 +163,12 @@ message_split = all_rows[15].split()
 name = message_split[0]
 
 out_file = open("kong44_Georges_life.txt","w")
-#for i in range(1):
-    #out_file.write()
+out_file.write(("Raccoon name: < {} >\n").format(name))
+out_file.write(("Average location: < {}, {} >\n").format(average_X,average_Y))
+out_file.write(("Distance traveled: < {} >\n").format(total_traveled))
+out_file.write(("Average energy level: < {} >\n").format(average_energy))
+out_file.write(("Raccoon end state: < {} >\n\n").format(all_rows[15]))
+
+out_file.write("Date    Time    X    Y    Asleep    Behavior Mode    Distance Traveled")
+         
+out_file.close()
