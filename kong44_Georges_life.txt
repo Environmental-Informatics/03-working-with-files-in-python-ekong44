@@ -1,0 +1,7 @@
+Raccoon name: < George >
+Average location: < 591189.034454322, 4504604.085012093 >
+Distance traveled: < 441.8183800689468 >
+Average energy level: < 563.6214285714285 >
+Raccoon end state: < George number 6 died from starvation >
+
+Date    Time    X    Y    Asleep    Behavior Mode    Distance Traveled
