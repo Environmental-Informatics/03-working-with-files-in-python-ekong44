@@ -15,7 +15,6 @@ Helpful files:
 """
 from statistics import mean
 import math
-from collections import defaultdict
 
 # part 1 of the assignment 
 george_data = open("2008Male00006.txt","r")
@@ -120,20 +119,49 @@ time_dict["Time"] = conv_time
 year_dict = {}
 year_dict["Year"] = conv_year
 
-final_dictionary = {**y_dict, **day_dict}
 
 """
 Functions and calculations
 """
-
+# mean calculation
 def average_list(val):
     return mean(val)
-    
+
+# sum calculation    
 def sum_list(val2):
     return sum(val2)
 
-print("the last column is:", final_matrix["Percent Step\n"])
-  
+# distance calculation
+def distance(val3, val4):
+    between_points = []
+    for i in range(0,13):
+        between_points.append(math.sqrt((val3[i]-val3[i+1])**2 + (val4[i]-val4[i+1])**2)) #difference between points for X and Y
+    return between_points
+
+#print("the last column is:", final_matrix["Percent Step\n"])
+
+# using functions to find values  
 average_energy = average_list(float_E)
 average_X = average_list(float_X)
 average_Y = average_list(float_Y)
+movement = distance(float_Y, float_Y)
+total_traveled = sum_list(movement)
+
+
+distance_dict = {}
+distance_dict["Distance"] = movement
+
+final_dictionary = {**y_dict, **day_dict, **asleep_dict, **x_dict, **behav_dict, **energy_dict,
+                    **num_dict, **msl_dict, **mvl_dict, **step_dict, **dist_dict, **cap_dict, 
+                    **risk_dict, **time_dict, **year_dict, **distance_dict}
+
+"""
+Output the new file
+"""
+# getting his name from the txt file 
+message_split = all_rows[15].split()
+name = message_split[0]
+
+out_file = open("kong44_Georges_life.txt","w")
+#for i in range(1):
+    #out_file.write()
