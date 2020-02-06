@@ -5,10 +5,13 @@ The script first imports needed libraries.
 The input file is read in and separated into rows (contained in a list).
 This list is split so that the headers and "dead or alive" message are removed. 
 The resulting matrix is transformed so that everything is in column format. 
+
 Transformed matrix is turned into a dictionary so keywords can be accessed.
 Dictionary is populated with tuples so they are converted into lists with the correct data type. 
 final_dictionary is the single, compiled dictionary with all the correct keywords and data types.
-Three functions are written to calculate average, sum, and difference between points. 
+Three functions are written to calculate average, sum, and difference between points.
+The initial distance is set to zero. 
+ 
 Functions are given inputs and new variables are created as an output to store data. 
 Movement data (distance calc) is made into a dictionary and added to compiled dictionary. 
 Raccoon name is extracted from input data. 

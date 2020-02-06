@@ -15,7 +15,6 @@ Helpful files:
 """
 from statistics import mean
 import math
-import pandas
 
 # part 1 of the assignment 
 george_data = open("2008Male00006.txt","r")
@@ -132,11 +131,11 @@ def average_list(val):
 def sum_list(val2):
     return sum(val2)
 
-# distance calculation
+# distance calculation    
 def distance(val3, val4):
-    between_points = []
-    for i in range(0,13):
-        between_points.append(math.sqrt((val3[i]-val3[i+1])**2 + (val4[i]-val4[i+1])**2)) #difference between points for X and Y
+    between_points = [0] # set the inital point to zero
+    for i in range(1,len(val3)):
+        between_points.append(math.sqrt((val3[i]-val3[i-1])**2 + (val4[i]-val4[i-1])**2)) #difference between points for X and Y
     return between_points
 
 
@@ -144,13 +143,13 @@ def distance(val3, val4):
 average_energy = average_list(float_E)
 average_X = average_list(float_X)
 average_Y = average_list(float_Y)
-movement = distance(float_Y, float_Y)
+movement = distance(float_X, float_Y)
 total_traveled = sum_list(movement)
 
 
+# dictionary compiling
 distance_dict = {}
 distance_dict["Distance"] = movement
-
 final_dictionary = {**y_dict, **day_dict, **asleep_dict, **x_dict, **behav_dict, **energy_dict,
                     **num_dict, **msl_dict, **mvl_dict, **step_dict, **dist_dict, **cap_dict, 
                     **risk_dict, **time_dict, **year_dict, **distance_dict}
@@ -169,6 +168,10 @@ out_file.write(("Distance traveled: < {} >\n").format(total_traveled))
 out_file.write(("Average energy level: < {} >\n").format(average_energy))
 out_file.write(("Raccoon end state: < {} >\n\n").format(all_rows[15]))
 
-out_file.write("Date    Time    X    Y    Asleep    Behavior Mode    Distance Traveled")
-         
+out_file.write("Date    Time    X    Y    Asleep    Behavior Mode    Distance Traveled\n")
+for i in range(len(final_dictionary['Year'])):
+    out_file.write('%s \t %s \t %f \t %f \t %s \t %s \t %f\n' % (final_dictionary['Day'][i], final_dictionary['Time'][i],
+    final_dictionary['X'][i], final_dictionary['Y'][i], final_dictionary['Asleep'][i], final_dictionary['Behavior Mode'][i],
+    final_dictionary['Distance'][i]))
+
 out_file.close()
